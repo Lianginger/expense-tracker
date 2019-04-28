@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
 const flash = require('connect-flash')
+const authenticated = require('./config/auth')
 
 // 判別開發環境
 if (process.env.NODE_ENV !== 'production') {
@@ -53,14 +54,23 @@ require('./config/passport')(passport)
 // 使用 connect-flash
 app.use(flash())
 
+// 登入後可以取得使用者的資訊方便我們在 view 裡面直接使用
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  next()
+})
+
 // 設定 bodyParser
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // 處理請求與回應
 app.use('/users', require('./routes/user'))
 app.use('/auth', require('./routes/auth'))
-app.use('/', require('./routes/home'))
-app.use('/records', require('./routes/record'))
+app.use('/', authenticated, require('./routes/home'))
+app.use('/records', authenticated, require('./routes/record'))
 
 app.listen(port, () => {
   console.log('Express is running')
