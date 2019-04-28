@@ -33,7 +33,7 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // 處理請求與回應
-// app.use('/users', require('./routes/user'))
+app.use('/users', require('./routes/user'))
 app.use('/', require('./routes/home'))
 app.use('/records', require('./routes/record'))
 

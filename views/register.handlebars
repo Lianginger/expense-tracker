@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row" style="margin-top: 10vh">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">
+          註冊
+        </h1>
+        {{!-- {{> messages}} --}}
+        <form action="/users/register" method="POST">
+          <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="name" id="name" name="name" class="form-control" value="{{{name}}}" />
+          </div>
+          <div class="form-group">
+            <label for="email">電子信箱</label>
+            <input type="email" id="email" name="email" class="form-control" value="{{{email}}}" />
+          </div>
+          <div class="form-group">
+            <label for="password">密碼</label>
+            <input type="password" id="password" name="password" class="form-control" value="{{{password}}}" />
+          </div>
+          <div class="form-group">
+            <label for="password2">確認密碼</label>
+            <input type="password" id="password2" name="password2" class="form-control" value="{{{password2}}}" />
+          </div>
+          <button type="submit" class="btn btn-outline-dark btn-block">
+            註冊
+          </button>
+        </form>
+        <p class="text-center mt-4">我有帳號，立即 <a href="/users/login">登入</a></p>
+      </div>
+    </div>
+  </div>
+</div>
