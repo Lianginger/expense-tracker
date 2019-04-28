@@ -18,12 +18,26 @@ router.post('/new', (req, res) => {
 
 // 編輯特定餐廳頁面
 router.get('/:id/edit', (req, res) => {
-  res.send('edit page')
+  Record.findOne({ _id: req.params.id }, (err, record) => {
+    if (err) return console.error(err)
+    res.render('edit', { record })
+  })
 })
 
 // 編輯特定餐廳
 router.put('/:id/edit', (req, res) => {
-  res.send('edit')
+  Record.findOne({ _id: req.params.id }, (err, record) => {
+    if (err) return console.error(err)
+    record.name = req.body.name
+    record.category = req.body.category
+    record.date = req.body.date
+    record.amount = req.body.amount
+
+    record.save((err) => {
+      if (err) return console.error(err)
+      res.redirect('/')
+    })
+  })
 })
 
 // 刪除特定餐廳

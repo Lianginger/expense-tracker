@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 m-auto">
-      <h4 class="text-center">請輸入你的支出</h4>
-      <form action="/records/new" method="POST">
+      <h4 class="text-center">請修改你的支出</h4>
+      <form action="/records/{{{record.id}}}/edit?_method=PUT" method="POST">
         <div class="form-group ">
           <label for="name">名稱*：</label>
-          <input type="text" id="name" name="name" class="form-control" />
+          <input type="text" id="name" name="name" class="form-control" value="{{{record.name}}}" />
         </div>
         <div class="form-group ">
           <label for="date">日期*：</label>
           <input type="date" id="date" name="date" value="2019-01-01" min="2019-01-01" max="2019-12-31"
-            class="form-control">
+            class="form-control" value="{{{record.date}}}">
         </div>
         <div class="input-group mb-3">
           <label for="category">類別*：</label>
           <div style="display: block; width: 100%">
             <select name="category" class="custom-select">
-              <option selected>Select</option>
+              <option>Select</option>
               <option value="home">家居物業</option>
               <option value="shuttle-van">交通出行</option>
               <option value="grin-beam">休閒娛樂</option>
@@ -27,9 +27,9 @@
         </div>
         <div class="form-group ">
           <label for="amount">金額*：</label>
-          <input type="text" id="amount" name="amount" class="form-control" />
+          <input type="text" id="amount" name="amount" class="form-control" value="{{{record.amount}}}" />
         </div>
-        <button type="submit" class="btn btn-outline-dark">Create</button>
+        <button type="submit" class="btn btn-outline-dark">送出</button>
       </form>
     </div>
   </div>
