@@ -12,9 +12,11 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="/?filterMonth=&filterCategory={{filterCategory}}">不按月份</a>
-          <a class="dropdown-item" href="/?filterMonth=01&filterCategory={{filterCategory}}">1月</a>
-          <a class="dropdown-item" href="/?filterMonth=02&filterCategory={{filterCategory}}">2月</a>
-          <a class="dropdown-item" href="/?filterMonth=03&filterCategory={{filterCategory}}">3月</a>
+          {{#each monthArray}}
+          <a class="dropdown-item"
+            href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">{{this.name}}</a>
+          {{/each}}
+
         </div>
       </div>
     </div>

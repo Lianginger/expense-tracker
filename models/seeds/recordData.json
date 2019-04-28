@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "name": "看電影",
+      "category": "grin-beam",
+      "date": "2019-04-01",
+      "amount": "250"
+    },
+    {
+      "name": "玩桌遊",
+      "category": "grin-beam",
+      "date": "2019-04-05",
+      "amount": "80"
+    },
+    {
+      "name": "紀念日吃大餐",
+      "category": "utensils",
+      "date": "2019-04-08",
+      "amount": "450"
+    },
+    {
+      "name": "排骨便當",
+      "category": "utensils",
+      "date": "2019-04-11",
+      "amount": "80"
+    },
+    {
+      "name": "百八魚場",
+      "category": "utensils",
+      "date": "2019-04-20",
+      "amount": "180"
+    },
+    {
+      "name": "加值悠遊卡",
+      "category": "shuttle-van",
+      "date": "2019-04-25",
+      "amount": "500"
+    }
+  ]
+}
