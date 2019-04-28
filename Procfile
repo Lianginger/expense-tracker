@@ -1,1 +1,1 @@
-web: node app.js
+web: npm run seeder & node app.js & wait -n
