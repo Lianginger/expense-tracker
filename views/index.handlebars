@@ -1,1 +1,28 @@
-<h2>hello world! 這是 index</h2>
+<div class="container">
+  <h1 class="text-center">總金額：　{{{totalAmount}}}</h1>
+  <ul class="list-group">
+    {{#each records}}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto">
+          <i class="fas fa-{{{this.category}}}" style="font-size: 2em; line-height: 1em"></i>
+        </div>
+        <div class="col-auto  mr-auto">
+          <span class="d-block" style="line-height: 1em">{{{this.name}}}</span>
+          <span style="font-size: 0.5em; line-height: 0.5em">{{{this.date}}}</span>
+        </div>
+        <div class="col-auto">
+          <h6 class="text-right" style="line-height: 2em">{{{this.amount}}}</h6>
+        </div>
+        <div class="col-auto">
+          <a href="/records/{{{this.id}}}/edit" class="btn btn-outline-dark">修改</a>
+          <form action="/records/{{{this.id}}}/delete?_method=DELETE" method="POST" style="display: inline">
+            <button type="submit" class="btn btn-outline-dark">刪除</button>
+          </form>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+
+</div>

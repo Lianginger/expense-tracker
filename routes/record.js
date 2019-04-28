@@ -16,11 +16,6 @@ router.post('/new', (req, res) => {
   })
 })
 
-// 查看特定餐廳頁面
-router.get('/:id', (req, res) => {
-  res.send('detail page')
-})
-
 // 編輯特定餐廳頁面
 router.get('/:id/edit', (req, res) => {
   res.send('edit page')

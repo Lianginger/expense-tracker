@@ -14,8 +14,8 @@ const recordSchema = new Schema({
     required: true,
   },
   date: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    required: true,
   },
   category: {
     type: String,
