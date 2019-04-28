@@ -10,6 +10,7 @@ router.get('/new', (req, res) => {
 // 建立新資料
 router.post('/new', (req, res) => {
   const newRecord = Record(req.body)
+  newRecord.userId = req.user._id
   newRecord.save((err) => {
     if (err) return console.log(err)
     res.redirect('/')
@@ -18,7 +19,7 @@ router.post('/new', (req, res) => {
 
 // 編輯特定餐廳頁面
 router.get('/:id/edit', (req, res) => {
-  Record.findOne({ _id: req.params.id }, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.error(err)
     res.render('edit', { record })
   })
@@ -26,7 +27,7 @@ router.get('/:id/edit', (req, res) => {
 
 // 編輯特定餐廳
 router.put('/:id/edit', (req, res) => {
-  Record.findOne({ _id: req.params.id }, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.error(err)
     record.name = req.body.name
     record.category = req.body.category
@@ -42,7 +43,7 @@ router.put('/:id/edit', (req, res) => {
 
 // 刪除特定餐廳
 router.delete('/:id/', (req, res) => {
-  Record.findOne({ _id: req.params.id }, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     record.remove((err) => {
       if (err) return console.error(err)
       res.redirect('/')
