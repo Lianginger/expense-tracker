@@ -72,6 +72,6 @@ app.use('/auth', require('./routes/auth'))
 app.use('/', authenticated, require('./routes/home'))
 app.use('/records', authenticated, require('./routes/record'))
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log('Express is running')
 })
