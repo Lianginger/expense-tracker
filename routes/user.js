@@ -6,13 +6,22 @@ const bcrypt = require('bcryptjs')
 
 // 登入頁面
 router.get('/login', (req, res) => {
-  res.render('login')
+  let errors = []
+  let errMessageArray = req.flash('error')
+  if (errMessageArray.length > 0) {
+    errors.push({ message: errMessageArray[0] })
+  }
+  res.render('login', { errors })
 })
 
 // 登入檢查
-router.post('/login', (req, res) => {
-  res.send('login')
-})
+router.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',            // 登入成功會回到根目錄
+    failureRedirect: '/users/login', // 失敗會留在原本頁面
+    failureFlash: true,
+  })
+)
 
 // 註冊頁面
 router.get('/register', (req, res) => {
