@@ -4,9 +4,10 @@ const port = 3000
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 
 // 設定連線到 mongoDB
-// 開發時可以打開 mongoose.set("debug", true)
+mongoose.set("debug", true) // 開發時可以打開 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/expense_tracker', {
   useNewUrlParser: true,
   useCreateIndex: true
@@ -27,6 +28,9 @@ app.use(express.static('public'))
 // 設定模板引擎
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+
+// 設定 bodyParser
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // 處理請求與回應
 // app.use('/users', require('./routes/user'))
