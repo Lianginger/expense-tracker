@@ -9,6 +9,8 @@ const session = require('express-session')
 const passport = require('passport')
 const flash = require('connect-flash')
 const authenticated = require('./config/auth')
+const helpers = require('handlebars-helpers')
+const math = helpers.comparison()
 
 // 判別開發環境
 if (process.env.NODE_ENV !== 'production') {

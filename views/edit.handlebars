@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-6 m-auto">
       <h4 class="text-center">請修改你的支出</h4>
@@ -9,19 +9,19 @@
         </div>
         <div class="form-group ">
           <label for="date">日期*：</label>
-          <input type="date" id="date" name="date" value="2019-01-01" min="2019-01-01" max="2019-12-31"
-            class="form-control" value="{{{record.date}}}">
+          <input type="date" id="date" name="date" min="2019-01-01" max="2019-12-31" class="form-control"
+            value="{{{record.date}}}">
         </div>
         <div class="input-group mb-3">
           <label for="category">類別*：</label>
           <div style="display: block; width: 100%">
             <select name="category" class="custom-select">
               <option>Select</option>
-              <option value="home">家居物業</option>
-              <option value="shuttle-van">交通出行</option>
-              <option value="grin-beam">休閒娛樂</option>
-              <option value="utensils">餐飲食品</option>
-              <option value="pen">其他</option>
+              <option value="home" {{#eq record.category "home"}}selected{{/eq}}>家居物業</option>
+              <option value="shuttle-van" {{#eq record.category "shuttle-van"}}selected{{/eq}}>交通出行</option>
+              <option value="grin-beam" {{#eq record.category "grin-beam"}}selected{{/eq}}>休閒娛樂</option>
+              <option value="utensils" {{#eq record.category "utensils"}}selected{{/eq}}>餐飲食品</option>
+              <option value="pen" {{#eq record.category "pen"}}selected{{/eq}}>其他</option>
             </select>
           </div>
         </div>
