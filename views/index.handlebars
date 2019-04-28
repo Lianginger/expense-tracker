@@ -1,4 +1,45 @@
 <div class="container">
+  <div class="row mt-3">
+    <div class="col-md-6 text-center">
+      <div class="dropdown">
+        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{#if filterMonth}}
+          {{{filterMonth}}} 月
+          {{else}}
+          月份
+          {{/if}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/?filterMonth=&filterCategory={{filterCategory}}">不按月份</a>
+          <a class="dropdown-item" href="/?filterMonth=01&filterCategory={{filterCategory}}">1月</a>
+          <a class="dropdown-item" href="/?filterMonth=02&filterCategory={{filterCategory}}">2月</a>
+          <a class="dropdown-item" href="/?filterMonth=03&filterCategory={{filterCategory}}">3月</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="dropdown">
+        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton2"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+          {{#if filterCategory}}
+          {{{filterCategory}}} 類
+          {{else}}
+          類別
+          {{/if}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+          <a class="dropdown-item" href="/?filterCategory=&filterMonth={{filterMonth}}">不按類別</a>
+          <a class="dropdown-item" href="/?filterCategory=home&filterMonth={{filterMonth}}">家居物業</a>
+          <a class="dropdown-item" href="/?filterCategory=shuttle-van">交通出行</a>
+          <a class="dropdown-item" href="/?filterCategory=grin-beam&filterMonth={{filterMonth}}">休閒娛樂</a>
+          <a class="dropdown-item" href="/?filterCategory=utensils&filterMonth={{filterMonth}}">餐飲食品</a>
+          <a class="dropdown-item" href="/?filterCategory=pen&filterMonth={{filterMonth}}">其他</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <h1 class="text-center my-5">總金額：　{{{totalAmount}}}</h1>
   <ul class="list-group">
     {{#each records}}
