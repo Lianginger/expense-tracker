@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 
 // 設定連線到 mongoDB
 // 開發時可以打開 mongoose.set("debug", true)
@@ -16,9 +17,13 @@ db.once('open', function () {
   console.log('Mongodb is connected!')
 })
 
-app.get('/', (req, res) => {
-  res.send('hello')
-})
+// 設定 method-override
+app.use(methodOverride('_method'))
+
+// 處理請求與回應
+// app.use('/users', require('./routes/user'))
+app.use('/', require('./routes/home'))
+app.use('/records', require('./routes/record'))
 
 app.listen(port, () => {
   console.log('Express is running')
