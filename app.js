@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
+const exphbs = require('express-handlebars')
 
 // 設定連線到 mongoDB
 // 開發時可以打開 mongoose.set("debug", true)
@@ -19,6 +20,13 @@ db.once('open', function () {
 
 // 設定 method-override
 app.use(methodOverride('_method'))
+
+// 提供靜態檔案
+app.use(express.static('public'))
+
+// 設定模板引擎
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 
 // 處理請求與回應
 // app.use('/users', require('./routes/user'))
