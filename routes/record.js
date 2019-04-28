@@ -28,7 +28,12 @@ router.put('/:id/edit', (req, res) => {
 
 // 刪除特定餐廳
 router.delete('/:id/', (req, res) => {
-  res.send('delete')
+  Record.findOne({ _id: req.params.id }, (err, record) => {
+    record.remove((err) => {
+      if (err) return console.error(err)
+      res.redirect('/')
+    })
+  })
 })
 
 module.exports = router
