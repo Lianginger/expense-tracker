@@ -1,11 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
+const moment = require('moment')
 
 // 建立新資料頁面
 router.get('/new', (req, res) => {
-  res.render('new')
+  const today = moment().format('YYYY-MM-DD')
+  console.log(today)
+  res.render('new', { today })
 })
+
 
 // 建立新資料
 router.post('/new', (req, res) => {
