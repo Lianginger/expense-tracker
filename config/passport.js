@@ -28,7 +28,7 @@ module.exports = passport => {
     clientID: process.env.FACEBOOK_ID,
     clientSecret: process.env.FACEBOOK_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK,
-    profileFields: ['email', 'displayName'],
+    profileFields: ['email', 'displayName', 'picture.type(large)'],
   },
     function (accessToken, refreshToken, profile, done) {
       User.findOne({ email: profile._json.email })
@@ -39,9 +39,11 @@ module.exports = passport => {
             bcrypt.genSalt(10, function (err, salt) {
               bcrypt.hash(randomPassword, salt, function (err, hash) {
                 // Store hash in your password DB.
+                console.log(profile._json)
                 const newUser = User({
                   name: profile._json.name,
                   email: profile._json.email,
+                  image: profile._json.picture.data.url,
                   password: hash,
                 })
                 newUser.save().then(user => {
