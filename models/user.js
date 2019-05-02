@@ -17,6 +17,10 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  image: {
+    type: String,
+    default: '/img/default-avatar.png',
+  }
 })
 
 module.exports = mongoose.model('User', userSchema)
