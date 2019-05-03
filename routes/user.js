@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../models/user')
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
+const moment = require('moment')
 
 // 登入頁面
 router.get('/login', (req, res) => {
@@ -78,7 +79,8 @@ router.get('/logout', (req, res) => {
 
 // 
 router.get('/profile', (req, res) => {
-  res.render('profile')
+  const date = moment(req.user.date).format('YYYY-MM-DD')
+  res.render('profile', { date })
 })
 
 module.exports = router
