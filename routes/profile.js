@@ -2,6 +2,24 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const moment = require('moment')
+const multer = require("multer")
+const cloudinary = require("cloudinary")
+const cloudinaryStorage = require("multer-storage-cloudinary")
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+})
+
+const storage = cloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: "expense-tracker-user-photo",
+  allowedFormats: ["jpg", "png"],
+  transformation: [{ width: 200, height: 200, gravity: "face", crop: "crop" }]
+})
+
+const parser = multer({ storage: storage });
 
 // 個人資料
 router.get('/', (req, res) => {
@@ -15,9 +33,10 @@ router.get('/edit', (req, res) => {
 })
 
 // 編輯個人資料
-router.put('/edit', (req, res) => {
+router.put('/edit', parser.single("image"), (req, res) => {
   User.findOne({ email: req.user.email }).then(user => {
     user.name = req.body.name
+    user.image = req.file.url
     user.date = moment().format('YYYY-MM-DD')
     user.save((err) => {
       if (err) return console.error(err)
