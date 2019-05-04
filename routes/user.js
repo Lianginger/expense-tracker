@@ -3,7 +3,6 @@ const router = express.Router()
 const User = require('../models/user')
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
-const moment = require('moment')
 
 // 登入頁面
 router.get('/login', (req, res) => {
@@ -75,29 +74,6 @@ router.get('/logout', (req, res) => {
   req.logout()
   req.flash('success_msg', '你已經成功登出')
   res.redirect('users/login')
-})
-
-// 個人資料
-router.get('/profile', (req, res) => {
-  const date = moment(req.user.date).format('YYYY-MM-DD')
-  res.render('profile', { date })
-})
-
-// 編輯個人資料頁面
-router.get('/profile/edit', (req, res) => {
-  res.render('profileEdit')
-})
-
-// 編輯個人資料
-router.put('/profile/edit', (req, res) => {
-  User.findOne({ email: req.user.email }).then(user => {
-    user.name = req.body.name
-    user.date = moment().format('YYYY-MM-DD')
-    user.save((err) => {
-      if (err) return console.error(err)
-      res.redirect('/users/profile')
-    })
-  })
 })
 
 module.exports = router
