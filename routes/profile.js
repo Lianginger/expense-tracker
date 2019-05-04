@@ -36,7 +36,7 @@ router.get('/edit', (req, res) => {
 router.put('/edit', parser.single("image"), (req, res) => {
   User.findOne({ email: req.user.email }).then(user => {
     user.name = req.body.name
-    user.image = req.file.url
+    if (req.file) { user.image = req.file.url }
     user.date = moment().format('YYYY-MM-DD')
     user.save((err) => {
       if (err) return console.error(err)

@@ -3,9 +3,15 @@
     <div class="card p-1" style="max-width: 540px; margin: 20vh auto;">
       <div class="row no-gutters">
         <div class="col-md-4 text-center p-3">
-          <img src="{{user.image}}" class="card-img" alt="avatar"
-            style="border-radius: 50%; width: 10em; height: 10em;">
-          <input type='file' name='image' />
+          <label for="user-image" style="position: relative;">
+            <img src="{{user.image}}" class="card-img" alt="avatar"
+              style="border-radius: 50%; width: 10em; height: 10em;">
+            <div id="user-img-layer"
+              style="position: absolute; left: 0px; top: 0px; border-radius: 50%; width: 10em; height: 10em; background-color:rgba(80, 80, 80, 0.6); line-height: 10em; color: #fff; cursor: pointer">
+              上傳圖片
+            </div>
+          </label>
+          <input type='file' name='image' id="user-image" class="d-none" accept="image/gif, image/jpeg, image/png" />
         </div>
         <div class="col-md-8  p-3">
           <div class="card-body">
