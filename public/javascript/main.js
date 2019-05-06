@@ -10,12 +10,12 @@ function checkImageUpload(input) {
     const validFileFormat = ['.jpg', '.png', '.jpeg']
 
     if (validFileFormat.indexOf(uploadFileFormat) < 0) {
-      alert('上傳檔案類型錯誤，請上傳 jpg 或 png 檔喲！')
+      alert('檔案類型錯誤，請選擇 jpg 或 png 檔喲！')
       input.value = null
-      $("#user-img-layer").text('請重新上傳！')
+      $("#user-img-layer").text('請重新選擇！')
       return false
     } else {
-      $("#user-img-layer").text('上傳成功！')
+      $("#user-img-layer").html('看起來棒極了！<br>快按下【確定】按鈕')
     }
   }
 }

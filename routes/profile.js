@@ -16,7 +16,7 @@ const storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: "expense-tracker-user-photo",
   allowedFormats: ["jpg", "png"],
-  transformation: [{ width: 200, height: 200, gravity: "face", crop: "crop" }]
+  transformation: [{ width: 200, height: 200, gravity: "face", crop: "thumb" }]
 })
 
 const parser = multer({ storage: storage });
