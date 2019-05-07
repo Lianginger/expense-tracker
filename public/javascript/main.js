@@ -1,6 +1,5 @@
-
 $("#user-image").change(function () {
-  checkImageUpload(this);
+  checkImageUpload(this)
 })
 
 function checkImageUpload(input) {
@@ -12,10 +11,19 @@ function checkImageUpload(input) {
     if (validFileFormat.indexOf(uploadFileFormat) < 0) {
       alert('檔案類型錯誤，請選擇 jpg 或 png 檔喲！')
       input.value = null
-      $("#user-img-layer").text('請重新選擇！')
+      $("#user-img-upload-text").text('請重新選擇！')
       return false
     } else {
-      $("#user-img-layer").html('看起來棒極了！<br>快按下【確定】按鈕')
+      $("#user-img-upload-text").html('太美了！<br>快按下確定')
     }
   }
 }
+
+$("#profile-edit-summit-button").click(function () {
+  $("#user-img-upload-text").html(`
+    <p>上傳中</p>
+    <div class="spinner-border spinner-border-sm" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  `)
+})
