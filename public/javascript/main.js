@@ -27,3 +27,4 @@ $("#profile-edit-summit-button").click(function () {
     </div>
   `)
 })
+

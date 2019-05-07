@@ -74,6 +74,7 @@ app.use('/auth', require('./routes/auth'))
 app.use('/', authenticated, require('./routes/home'))
 app.use('/records', authenticated, require('./routes/record'))
 app.use('/profile', authenticated, require('./routes/profile'))
+app.use('/statistic', authenticated, require('./routes/statistic'))
 
 app.listen(process.env.PORT || port, () => {
   console.log('The Express server is running')
