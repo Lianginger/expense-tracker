@@ -1,6 +1,24 @@
 {
   "results": [
     {
+      "name": "計程車費",
+      "category": "shuttle-van",
+      "date": "2019-02-11",
+      "amount": "750"
+    },
+    {
+      "name": "買書",
+      "category": "pen",
+      "date": "2019-03-01",
+      "amount": "250"
+    },
+    {
+      "name": "家樂福購物",
+      "category": "home",
+      "date": "2019-03-15",
+      "amount": "1250"
+    },
+    {
       "name": "看電影",
       "category": "grin-beam",
       "date": "2019-04-01",
@@ -35,6 +53,24 @@
       "category": "shuttle-van",
       "date": "2019-04-25",
       "amount": "500"
+    },
+    {
+      "name": "加值悠遊卡",
+      "category": "shuttle-van",
+      "date": "2019-05-15",
+      "amount": "1500"
+    },
+    {
+      "name": "遊樂園",
+      "category": "grin-beam",
+      "date": "2019-05-25",
+      "amount": "600"
+    },
+    {
+      "name": "投資",
+      "category": "pen",
+      "date": "2019-06-25",
+      "amount": "3600"
     }
   ]
 }
