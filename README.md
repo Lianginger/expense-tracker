@@ -23,7 +23,11 @@ Password:123456
 - 依月份、分類別篩選支出紀錄，並計算出總金額
 - 瀏覽所有支出紀錄，並新增 / 修改 / 刪除任何支出紀錄
   
-![網站功能](https://github.com/Lianginger/expense-tracker/blob/master/public/img/screenshot-index.png)
+![網站功能](https://github.com/Lianginger/expense-tracker/blob/master/public/img/screenshot-index.png)  
+
+![網站功能](https://github.com/Lianginger/expense-tracker/blob/master/public/img/screenshot-profile.png)  
+
+![網站功能](https://github.com/Lianginger/expense-tracker/blob/master/public/img/screenshot-statistic.png)
 
 ## 安裝前提
 - [MongoDB 4.0 以上](https://docs.mongodb.com/manual/installation/)
