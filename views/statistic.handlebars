@@ -3,6 +3,13 @@
 <div class="container">
   <h1 class="text-center my-5">支出統計</h1>
   <div class="row">
+    <div class="col-6 text-center py-5 border border-dark rounded">
+      <h3>總支出花費</h3>
+      <h1>{{{totalSpend}}}</h1>
+    </div>
+    <div class="col-6">
+      <div id="category-spend"></div>
+    </div>
     <div class="col-12">
       <div id="monthly-spend"></div>
     </div>
@@ -12,17 +19,19 @@
 
 <script language="JavaScript">
   $(document).ready(function () {
-    var title = {
+    //monthly-spend
+    const monthlySpendData = {}
+    monthlySpendData.title = {
       text: '每月花費金額'
     };
-    var subtitle = {
+    monthlySpendData.subtitle = {
       text: '2019/01/01 - 2019/12/31'
     };
-    var xAxis = {
+    monthlySpendData.xAxis = {
       categories: ['一月', '二月', '三月', '四月', '五月', '六月'
         , '七月', '八月', '九月', '十月', '十一月', '十二月']
     };
-    var yAxis = {
+    monthlySpendData.yAxis = {
       title: {
         text: '花費金額'
       },
@@ -33,18 +42,18 @@
       }]
     };
 
-    var tooltip = {
+    monthlySpendData.tooltip = {
       valueSuffix: ''
     }
 
-    var legend = {
+    monthlySpendData.legend = {
       layout: 'vertical',
       align: 'right',
       verticalAlign: 'middle',
       borderWidth: 0
     };
 
-    var series = [
+    monthlySpendData.series = [
       {
         name: '{{ user.name }}',
         data: [
@@ -53,18 +62,40 @@
           {{/each}}
         ]
       }
-    ];
-
-  var json = {};
-
-  json.title = title;
-  json.subtitle = subtitle;
-  json.xAxis = xAxis;
-  json.yAxis = yAxis;
-  json.tooltip = tooltip;
-  json.legend = legend;
-  json.series = series;
-
-  $('#monthly-spend').highcharts(json);
+    ]
+  $('#monthly-spend').highcharts(monthlySpendData)
+  
+  //category-spend
+  const categorySpendData = {}
+  categorySpendData.chart = {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
+    };
+    categorySpendData.title = {
+      text: '各類別花費占比'
+    };
+    categorySpendData.tooltip = {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    };
+    categorySpendData.plotOptions = {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}%</b>: {point.percentage:.1f} %',
+          style: {
+            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+          }
+        }
+      }
+    };
+    categorySpendData.series = [{
+      type: 'pie',
+      name: '花費占比',
+      data: {{{categorySpendData}}}
+    }];
+    $('#category-spend').highcharts(categorySpendData);  
   });
 </script>
