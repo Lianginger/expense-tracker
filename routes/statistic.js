@@ -33,7 +33,6 @@ router.get('/', (req, res) => {
           [category[key], 100 * categorySpend[key] / totalSpend])
       }
       categorySpendData = JSON.stringify(categorySpendArray)
-      console.log(categorySpendData)
       res.render('statistic', { monthlySpend, categorySpendData, totalSpend })
     })
 
