@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const moment = require('moment')
+const tz = require('moment-timezone')
 const multer = require("multer")
 const cloudinary = require("cloudinary")
 const cloudinaryStorage = require("multer-storage-cloudinary")
@@ -37,7 +38,7 @@ router.put('/edit', parser.single("image"), (req, res) => {
   User.findOne({ email: req.user.email }).then(user => {
     user.name = req.body.name
     if (req.file) { user.image = req.file.url }
-    user.date = moment().format('YYYY-MM-DD')
+    user.date = moment().tz('Asia/Taipei').format('YYYY-MM-DD')
     user.save((err) => {
       if (err) return console.error(err)
       res.redirect('/profile')

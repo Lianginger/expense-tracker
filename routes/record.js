@@ -2,10 +2,11 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
 const moment = require('moment')
+const tz = require('moment-timezone')
 
 // 建立新資料頁面
 router.get('/new', (req, res) => {
-  const today = moment().format('YYYY-MM-DD')
+  const today = moment().tz('Asia/Taipei').format('YYYY-MM-DD')
   res.render('new', { today })
 })
 
